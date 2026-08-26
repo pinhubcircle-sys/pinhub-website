@@ -1,177 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PinHub — a smarter way to discover local businesses, education, community experiences, events, offers and opportunities.">
-  <meta name="theme-color" content="#6435E8">
-  <title>PinHub | Discover. Connect. Grow.</title>
-  <style>
-    :root{
-      --purple:#6435E8; --blue:#12285B; --text:#162B5B; --muted:#71809e;
-      --bg:#FCFBFF; --white:#fff; --border:#E5E6EF;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
-    a{text-decoration:none;color:inherit}
-    .wrap{max-width:1120px;margin:auto;padding:0 22px}
-    header{position:sticky;top:0;z-index:10;background:rgba(252,251,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(229,230,239,.8)}
-    nav{height:74px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:23px;letter-spacing:-.5px}
-    .brand-mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#6435E8,#8b62f0);display:grid;place-items:center;color:#fff;font-weight:900}
-    .links{display:flex;gap:28px;color:#53617c;font-size:14px;font-weight:600}
-    .links a:hover{color:var(--purple)}
-    .nav-btn{background:var(--purple);color:#fff;padding:11px 18px;border-radius:12px;font-weight:700;font-size:14px}
-    .hero{padding:92px 0 75px;overflow:hidden}
-    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:55px;align-items:center}
-    .eyebrow{display:inline-flex;padding:7px 12px;border-radius:999px;background:#F0EBFF;color:var(--purple);font-size:12px;font-weight:800;margin-bottom:18px}
-    h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-3px;margin:0 0 22px;color:var(--blue)}
-    h1 span{color:var(--purple)}
-    .lead{font-size:19px;color:#66748f;max-width:650px;margin:0 0 30px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:14px 21px;border-radius:13px;font-weight:800}
-    .primary{background:var(--purple);color:#fff;box-shadow:0 10px 28px rgba(100,53,232,.22)}
-    .secondary{border:1px solid var(--border);background:#fff;color:var(--text)}
-    .hero-card{background:#fff;border:1px solid var(--border);border-radius:28px;padding:22px;box-shadow:0 22px 60px rgba(30,36,80,.09);transform:rotate(1.5deg)}
-    .mock-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-    .mock-title{font-weight:800;font-size:18px}
-    .pill{font-size:11px;background:#F1EDFF;color:var(--purple);padding:6px 9px;border-radius:99px;font-weight:800}
-    .search{height:43px;border:1px solid var(--border);border-radius:12px;padding:0 14px;color:#9aa4b7;display:flex;align-items:center;margin-bottom:14px;font-size:13px}
-    .notice{border:1px solid var(--border);border-radius:16px;padding:14px;margin:10px 0}
-    .notice-top{display:flex;justify-content:space-between;font-size:11px;font-weight:800}
-    .notice h3{font-size:14px;margin:5px 0 3px}
-    .notice p{font-size:11px;color:#7b879d;margin:0}
-    .news{color:#F28A25}.business{color:#E82C83}.study{color:#673DE7}.events{color:#10A97A}
-    section{padding:78px 0}
-    .section-head{text-align:center;max-width:700px;margin:0 auto 42px}
-    .section-head h2{font-size:38px;letter-spacing:-1.5px;margin:0 0 10px;color:var(--blue)}
-    .section-head p{color:var(--muted);margin:0}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:23px;min-height:170px}
-    .icon{font-size:26px;margin-bottom:14px}
-    .card h3{margin:0 0 7px;font-size:17px}.card p{margin:0;color:#77839b;font-size:14px}
-    .band{background:var(--blue);color:#fff;border-radius:28px;padding:55px}
-    .band h2{font-size:38px;line-height:1.15;margin:0 0 12px}.band p{color:#cbd3e5;max-width:680px}
-    .band .secondary{border:0;margin-top:8px}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .step{padding:25px;border-radius:20px;background:#fff;border:1px solid var(--border)}
-    .num{width:34px;height:34px;border-radius:10px;background:#F0EBFF;color:var(--purple);display:grid;place-items:center;font-weight:900;margin-bottom:15px}
-    .contact{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-    form{background:#fff;border:1px solid var(--border);border-radius:22px;padding:24px}
-    label{display:block;font-size:13px;font-weight:700;margin:0 0 6px}
-    input,textarea{width:100%;padding:12px 13px;border:1px solid var(--border);border-radius:11px;font:inherit;margin-bottom:15px}
-    textarea{min-height:120px;resize:vertical}
-    footer{padding:30px 0;border-top:1px solid var(--border);color:#7b879d;font-size:13px}
-    .footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-    @media(max-width:850px){
-      .links{display:none}.hero-grid,.contact{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.hero{padding-top:65px}.hero-card{transform:none}
-    }
-    @media(max-width:520px){
-      .grid{grid-template-columns:1fr}h1{letter-spacing:-2px}.band{padding:32px 24px}.section-head h2{font-size:31px}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PinHub — a smarter way to discover local businesses, education, community experiences, offers and everyday opportunities.">
+<title>PinHub — Post • Connect • Grow</title>
+<style>
+:root{
+  --purple:#5b2be8;--purple2:#8b35ef;--pink:#ed168c;--orange:#ff6a24;
+  --navy:#12234d;--text:#26345a;--muted:#697594;--line:#e9e7f3;
+  --soft:#faf9ff;--dark:#17142d;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:#fff;line-height:1.55}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,92%);margin:auto}
+header{height:76px;background:rgba(255,255,255,.96);border-bottom:1px solid #eeeef5;position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{width:142px;height:58px;object-fit:contain;object-position:left center}
+nav{display:flex;gap:27px;font-size:13px;font-weight:750}
+nav a:hover{color:var(--purple)}
+.nav-btn,.primary{background:linear-gradient(135deg,#5620e6,#7434f1);color:#fff;border:0;border-radius:12px;padding:13px 20px;font-weight:800;box-shadow:0 10px 24px #5b2be82b}
+.hero{padding:70px 0 55px;overflow:hidden;background:#fff}
+.hero-grid{display:grid;grid-template-columns:44% 56%;align-items:center}
+.eyebrow{display:inline-block;background:#f0ebff;color:var(--purple);font-size:11px;font-weight:850;padding:7px 13px;border-radius:20px;margin-bottom:18px}
+h1{font-size:52px;line-height:1.05;letter-spacing:-2px;margin:0 0 16px;color:var(--navy)}
+h1 strong{background:linear-gradient(90deg,var(--purple),var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:16px;color:var(--muted);max-width:550px}
+.actions{display:flex;gap:13px;margin:27px 0 38px;flex-wrap:wrap}
+.secondary{padding:13px 22px;border:1px solid #cfc8ef;border-radius:12px;font-weight:800;color:#26345a;background:#fff}
+.mini-features{display:flex;gap:28px;flex-wrap:wrap}
+.mini{text-align:center;font-size:11px;font-weight:750}
+.mini-icon{width:40px;height:40px;border-radius:50%;background:#f7f4ff;display:grid;place-items:center;margin:auto auto 7px;color:var(--purple);font-size:18px}
+.hero-visual{position:relative;min-height:470px;display:flex;align-items:center;justify-content:center}
+.theme-glow{position:absolute;inset:0;background-image:url('assets/pinhub-theme.png');background-size:cover;background-position:center;opacity:.20;filter:saturate(1.1);border-radius:40px}
+.phone-row{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:center;gap:12px;width:100%}
+.phone{background:#10101a;border:6px solid #111;border-radius:32px;padding:5px;box-shadow:0 22px 42px rgba(25,20,70,.22);overflow:hidden}
+.phone img{display:block;width:100%;height:100%;object-fit:cover;border-radius:23px}
+.phone.side{width:170px;height:355px;transform:translateY(30px)}
+.phone.main{width:205px;height:430px}
+.stats{background:linear-gradient(100deg,#f6f2ff,#fff8ff);border:1px solid #eee9ff;border-radius:18px;padding:25px 28px;display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:14px;align-items:center}
+.stats h3{margin:0;color:#25168b;font-size:20px;line-height:1.2}
+.stats p{margin:7px 0 0;font-size:12px;color:var(--muted)}
+.stat{border:1px solid #e3dcff;background:#fff;border-radius:12px;text-align:center;padding:15px 8px}
+.stat b{display:block;color:var(--purple);font-size:22px}
+.stat span{font-size:10px;color:#65708d}
+section{scroll-margin-top:88px}
+.features{padding:68px 0}
+.section-head{text-align:center;max-width:680px;margin:0 auto 35px}
+.section-head h2{font-size:29px;color:#16244b;margin:0 0 6px}
+.section-head p{margin:0;color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.card{border:1px solid var(--line);border-radius:15px;padding:22px 18px;background:#fff;box-shadow:0 8px 25px rgba(35,27,91,.045)}
+.card .ico{width:40px;height:40px;border-radius:11px;background:#f3efff;color:var(--purple);display:grid;place-items:center;font-size:19px;margin-bottom:16px}
+.card h3{font-size:14px;margin:0 0 7px;color:#1a2850}
+.card p{font-size:11px;color:#65708d;min-height:68px;margin:0 0 15px}
+.learn{font-size:11px;font-weight:800;color:var(--purple)}
+.how{padding:65px 0;background:var(--soft)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;text-align:center}
+.step-num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;color:#fff;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--pink))}
+.step h3{font-size:14px;margin:0 0 6px}.step p{font-size:11px;color:var(--muted);margin:0}
+.categories{padding:65px 0}
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.category{border-radius:16px;padding:25px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(35,27,91,.04)}
+.category b{font-size:16px;color:var(--navy)}.category p{font-size:11px;color:var(--muted);margin:7px 0 0}
+.business{padding:65px 0;background:linear-gradient(120deg,#fbf8ff,#fff)}
+.business-box{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.business-box h2{font-size:30px;color:var(--navy);margin:0 0 10px}
+.business-box p{color:var(--muted);font-size:13px}
+.business-list{display:grid;gap:12px}.business-item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;font-size:12px;font-weight:750}
+.download{background:linear-gradient(115deg,#21105e,#351080);color:#fff;padding:62px 0}
+.download-grid{display:grid;grid-template-columns:1fr 1.4fr 1fr;align-items:center;gap:30px}
+.download-logo{width:185px;max-width:100%;filter:brightness(0) invert(1);opacity:.96}
+.download h2{font-size:29px;line-height:1.2;margin:0 0 10px}
+.download p{font-size:13px;color:#ddd8f5}
+.stores{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.store{border:1px solid #8c7cb8;border-radius:9px;padding:10px 13px;font-weight:800;font-size:12px;background:#160a4b}
+.benefits{display:grid;gap:18px}
+.benefit{display:flex;gap:12px;align-items:center}
+.benefit i{width:38px;height:38px;border-radius:50%;background:#4a2a88;display:grid;place-items:center;font-style:normal}
+.benefit b{display:block;font-size:12px}.benefit span{font-size:11px;color:#d7d1ef}
+footer{background:#191727;color:#ddd8ee;padding:46px 0 20px}
+.footer-grid{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:30px}
+footer h4{color:#fff;font-size:12px;margin:0 0 13px}
+footer a,footer p{font-size:11px;color:#aaa5bd;display:block;margin:7px 0}
+.footer-logo{width:125px;height:auto;filter:brightness(0) invert(1)}
+.copyright{border-top:1px solid #38344a;margin-top:28px;padding-top:15px;text-align:center;font-size:10px;color:#9690aa}
+@media(max-width:1000px){
+ nav{display:none}.hero-grid{grid-template-columns:1fr}.hero-copy{text-align:center}.lead{margin:auto}.mini-features{justify-content:center}
+ .hero-visual{margin-top:35px}.stats{grid-template-columns:repeat(2,1fr)}.stats .intro{grid-column:1/-1}
+ .cards{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.category-grid{grid-template-columns:repeat(2,1fr)}
+ .business-box{grid-template-columns:1fr}.download-grid{grid-template-columns:1fr;text-align:center}.benefits{max-width:400px;margin:auto;text-align:left}.stores{justify-content:center}
+ .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+ h1{font-size:39px}.hero{padding-top:45px}.phone.side{display:none}.phone.main{width:220px;height:440px}
+ .stats{grid-template-columns:1fr 1fr;padding:18px}.cards,.steps,.category-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}
+ .nav-btn{padding:10px 13px;font-size:11px}.logo{width:118px}
+}
+</style>
 </head>
 <body>
 <header>
-  <div class="wrap">
+  <div class="container nav">
+    <a href="#home"><img class="logo" src="assets/pinhub-logo.png" alt="PinHub"></a>
     <nav>
-      <a class="brand" href="#home"><span class="brand-mark">P</span>PinHub</a>
-      <div class="links">
-        <a href="#features">Features</a><a href="#how">How it works</a><a href="#business">For Business</a><a href="#contact">Contact</a>
-      </div>
-      <a class="nav-btn" href="#contact">Get in touch</a>
+      <a href="#home">Home</a><a href="#features">Features</a><a href="#how">How It Works</a>
+      <a href="#categories">Categories</a><a href="#business">For Business</a><a href="#contact">Contact</a>
     </nav>
+    <a class="nav-btn" href="#download">Download App</a>
   </div>
 </header>
 
-<main>
-  <section class="hero" id="home">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="eyebrow">PINHUB • LOCAL DISCOVERY PLATFORM</div>
-        <h1>Discover what’s <span>around you.</span></h1>
-        <p class="lead">A smarter way to discover local businesses, education, community experiences, events, offers and everyday opportunities — all in one place.</p>
-        <div class="actions">
-          <a class="btn primary" href="#features">Explore PinHub</a>
-          <a class="btn secondary" href="#contact">Partner with us</a>
-        </div>
+<main id="home">
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">PINHUB · LOCAL DISCOVERY PLATFORM</span>
+      <h1>Discover what’s<br><strong>around you.</strong></h1>
+      <p class="lead">A smarter way to discover local businesses, education, community experiences, offers and everyday opportunities — all in one place.</p>
+      <div class="actions">
+        <a class="primary" href="#download">▣ &nbsp; Download App</a>
+        <a class="secondary" href="#features">Explore Features &nbsp; →</a>
       </div>
-      <div class="hero-card" aria-label="PinHub preview">
-        <div class="mock-head"><div class="mock-title">Nearby notices</div><div class="pill">2 km</div></div>
-        <div class="search">⌕ &nbsp; Search nearby</div>
-        <div class="notice"><div class="notice-top"><span class="news">NEWS</span><span>300 m</span></div><h3>Road construction on Main Street</h3><p>Heavy traffic expected till next week.</p></div>
-        <div class="notice"><div class="notice-top"><span class="business">BUSINESS</span><span>450 m</span></div><h3>Freelance designer needed</h3><p>Local opportunity for logo & brand work.</p></div>
-        <div class="notice"><div class="notice-top"><span class="study">STUDY</span><span>600 m</span></div><h3>Quiet place to study</h3><p>Library with WiFi and peaceful environment.</p></div>
-        <div class="notice"><div class="notice-top"><span class="events">EVENTS</span><span>700 m</span></div><h3>Community clean-up this Sunday</h3><p>Join your neighborhood.</p></div>
+      <div class="mini-features">
+        <div class="mini"><div class="mini-icon">♧</div>Post Notice</div>
+        <div class="mini"><div class="mini-icon">♙</div>Connect People</div>
+        <div class="mini"><div class="mini-icon">⌖</div>Discover Local</div>
+        <div class="mini"><div class="mini-icon">✥</div>Grow Together</div>
       </div>
     </div>
-  </section>
+    <div class="hero-visual">
+      <div class="theme-glow"></div>
+      <div class="phone-row">
+        <div class="phone side"><img src="assets/app-add-note.png" alt="PinHub Add Notice"></div>
+        <div class="phone main"><img src="assets/app-board.png" alt="PinHub Board"></div>
+        <div class="phone side"><img src="assets/app-profile.png" alt="PinHub Profile"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="features">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>One place for local discovery</h2>
-        <p>PinHub is being built to bring useful nearby information and opportunities together.</p>
-      </div>
-      <div class="grid">
-        <div class="card"><div class="icon">📍</div><h3>Nearby Discovery</h3><p>Find useful places, notices and opportunities around your selected area.</p></div>
-        <div class="card"><div class="icon">🏪</div><h3>Local Businesses</h3><p>Discover businesses, services, offers and trusted local profiles.</p></div>
-        <div class="card"><div class="icon">🎓</div><h3>Education</h3><p>Explore schools, colleges, study opportunities and education-related information.</p></div>
-        <div class="card"><div class="icon">👥</div><h3>Community</h3><p>Connect with people and participate in local events and experiences.</p></div>
-      </div>
-    </div>
-  </section>
+<div class="container">
+<section class="stats">
+  <div class="intro"><h3>Local Notices. Real Connections.<br>Endless Possibilities.</h3><p>From local updates to business opportunities, study spots to events — PinHub keeps you informed and connected.</p></div>
+  <div class="stat"><b>10K+</b><span>Active Users</span></div>
+  <div class="stat"><b>25K+</b><span>Notices Posted</span></div>
+  <div class="stat"><b>5K+</b><span>Local Boards</span></div>
+  <div class="stat"><b>50+</b><span>Categories</span></div>
+</section>
+</div>
 
-  <section id="how">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Simple by design</h2>
-        <p>The PinHub experience is built around discovering, sharing and connecting.</p>
-      </div>
-      <div class="steps">
-        <div class="step"><div class="num">1</div><h3>Discover</h3><p>Browse location-based notices and information relevant to you.</p></div>
-        <div class="step"><div class="num">2</div><h3>Post & Share</h3><p>Share useful notices, opportunities, events or information with your community.</p></div>
-        <div class="step"><div class="num">3</div><h3>Connect</h3><p>Save useful posts, connect with people and interact with local profiles.</p></div>
-      </div>
-    </div>
-  </section>
+<section class="features" id="features">
+<div class="container">
+<div class="section-head"><h2>Everything You Need in One App</h2><p>PinHub brings your community closer with powerful features designed for everyday life.</p></div>
+<div class="cards">
+<article class="card"><div class="ico">⌖</div><h3>Post Notices</h3><p>Share updates, alerts, offers or events with your local community.</p><a class="learn" href="#download">Learn more →</a></article>
+<article class="card"><div class="ico">♙</div><h3>Connect People</h3><p>Discover people, send requests, build connections and grow your network.</p><a class="learn" href="#how">Learn more →</a></article>
+<article class="card"><div class="ico">▮</div><h3>Save & Access</h3><p>Save important notices and access them anytime in your personal collection.</p><a class="learn" href="#features">Learn more →</a></article>
+<article class="card"><div class="ico">☏</div><h3>Chat & Engage</h3><p>Chat with users, respond to notices and stay connected.</p><a class="learn" href="#contact">Learn more →</a></article>
+<article class="card"><div class="ico">☆</div><h3>Reviews & Trust</h3><p>Read reviews, share feedback and build a trusted community.</p><a class="learn" href="#contact">Learn more →</a></article>
+</div>
+</div>
+</section>
 
-  <section id="business">
-    <div class="wrap">
-      <div class="band">
-        <h2>Built for communities and businesses.</h2>
-        <p>PinHub will help local businesses improve visibility while giving people a simpler way to discover useful services, offers and opportunities nearby.</p>
-        <a class="btn secondary" href="#contact">Become an early partner</a>
-      </div>
-    </div>
-  </section>
+<section class="how" id="how">
+<div class="container">
+<div class="section-head"><h2>How PinHub Works</h2><p>Simple steps to post, discover, connect and grow within your local community.</p></div>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><h3>Post a Notice</h3><p>Create a useful local notice with details, category and location.</p></div>
+<div class="step"><div class="step-num">2</div><h3>Discover</h3><p>Find relevant notices, people, businesses, events and opportunities.</p></div>
+<div class="step"><div class="step-num">3</div><h3>Connect</h3><p>Save, message, send requests and build meaningful connections.</p></div>
+<div class="step"><div class="step-num">4</div><h3>Grow</h3><p>Build trust through participation, reviews and community activity.</p></div>
+</div>
+</div>
+</section>
 
-  <section id="contact">
-    <div class="wrap contact">
-      <div>
-        <div class="section-head" style="text-align:left;margin:0 0 20px">
-          <h2>Let’s build PinHub together.</h2>
-          <p>Interested in becoming an early business, education or community partner? Get in touch.</p>
-        </div>
-        <p><strong>Email:</strong> info@pinhub.in</p>
-        <p><strong>Website:</strong> pinhub.in</p>
-      </div>
-      <form action="mailto:info@pinhub.in" method="post" enctype="text/plain">
-        <label for="name">Name</label><input id="name" name="Name" required>
-        <label for="email">Email</label><input id="email" type="email" name="Email" required>
-        <label for="message">Message</label><textarea id="message" name="Message" required></textarea>
-        <button class="btn primary" type="submit" style="border:0;cursor:pointer">Send enquiry</button>
-      </form>
-    </div>
-  </section>
+<section class="categories" id="categories">
+<div class="container">
+<div class="section-head"><h2>Discover Across Categories</h2><p>Explore the areas that matter to your everyday life.</p></div>
+<div class="category-grid">
+<div class="category"><b>News & Updates</b><p>Local announcements, alerts and useful community information.</p></div>
+<div class="category"><b>Business</b><p>Local businesses, offers, services and opportunities.</p></div>
+<div class="category"><b>Education</b><p>Schools, study spots, learning resources and education-related notices.</p></div>
+<div class="category"><b>Events & Community</b><p>Discover events, activities and community experiences around you.</p></div>
+</div>
+</div>
+</section>
+
+<section class="business" id="business">
+<div class="container business-box">
+<div>
+<h2>Helping Local Businesses Get Discovered</h2>
+<p>PinHub gives businesses a simple way to reach nearby people, share offers, publish useful updates and build stronger local relationships.</p>
+<a class="primary" href="#contact">Partner With PinHub →</a>
+</div>
+<div class="business-list">
+<div class="business-item">📍 Local visibility</div>
+<div class="business-item">📣 Promote offers & updates</div>
+<div class="business-item">🤝 Build customer connections</div>
+<div class="business-item">⭐ Grow trust through reviews</div>
+</div>
+</div>
+</section>
+
+<section class="download" id="download">
+<div class="container download-grid">
+<div><img class="download-logo" src="assets/pinhub-logo.png" alt="PinHub"></div>
+<div>
+<h2>See It. Share It. Grow It.<br>Only on PinHub.</h2>
+<p>Join people already discovering, connecting and growing their community.</p>
+<div class="stores"><span class="store">▶ Google Play</span><span class="store">● App Store</span><span class="store">▣ QR</span></div>
+</div>
+<div class="benefits">
+<div class="benefit"><i>♧</i><div><b>Free to Download</b><span>Available on Android & iOS</span></div></div>
+<div class="benefit"><i>✓</i><div><b>Easy to Use</b><span>Simple, fast and user-friendly</span></div></div>
+<div class="benefit"><i>♡</i><div><b>Made for Community</b><span>Built for people, by people</span></div></div>
+</div>
+</div>
+</section>
 </main>
 
-<footer>
-  <div class="wrap footer-row">
-    <div>© 2026 PinHub. All rights reserved.</div>
-    <div>Discover. Connect. Grow.</div>
-  </div>
+<footer id="contact">
+<div class="container">
+<div class="footer-grid">
+<div><img class="footer-logo" src="assets/pinhub-logo.png" alt="PinHub"><p>A local discovery platform that helps you post, connect and grow with your community.</p></div>
+<div><h4>Quick Links</h4><a href="#home">Home</a><a href="#features">Features</a><a href="#how">How It Works</a><a href="#categories">Categories</a><a href="#contact">Contact</a></div>
+<div><h4>For Users</h4><a href="#features">My Notices</a><a href="#features">Saved Notices</a><a href="#features">Connections</a><a href="#contact">Help / Alerts</a></div>
+<div><h4>For Business</h4><a href="#business">List Your Business</a><a href="#business">Business Solutions</a><a href="#business">Partner With Us</a></div>
+<div><h4>Support</h4><a href="#contact">Help Center</a><a href="#contact">Privacy Policy</a><a href="#contact">Terms & Conditions</a></div>
+</div>
+<div class="copyright">© 2026 PinHub. All rights reserved.</div>
+</div>
 </footer>
 </body>
 </html>
